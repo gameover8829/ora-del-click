@@ -105,7 +105,7 @@ if producto and precio and link_ml:
     mensaje_codificado = urllib.parse.quote(mensaje_final)
     url_whatsapp = f"https://wa.me/?text={mensaje_codificado}"
     
-    st.link_button("📲 Haz clic aquí para enviarlo directo por WhatsApp", url_whatsapp, type="primary")
+    st.link_button("Enviar por WhatsApp", url_whatsapp, type="primary")
 
 else:
     st.info("Por favor, introduce el nombre del producto, precio y link arriba para generar los textos personalizados.")
