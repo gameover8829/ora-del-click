@@ -18,7 +18,7 @@ with col2:
     link_ml = st.text_input("Link de MercadoLibre", placeholder="https://articulo.mercadolibre.com.mx/...")
 
 # Botón mágico
-if st.button("🚀 Generar Texto y Link de WhatsApp", type="primary"):
+if st.button("Generar Texto y Link de WhatsApp", type="primary"):
     if producto and precio and link_ml:
         # 1. Crea el texto promocional que pediste
         mensaje_venta = f"🔥 ¡Gran oferta, no te la pierdas! 🔥\n\nLlévate {producto} a solo {precio}. 😱\n\n👉 Cómpralo aquí antes de que se acabe: \n\n {link_ml} \n\n#Ofertas #MercadoLibre"
