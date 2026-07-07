@@ -21,7 +21,7 @@ with col2:
 if st.button("Generar Texto y Link de WhatsApp", type="primary"):
     if producto and precio and link_ml:
         # 1. Crea el texto promocional que pediste
-        mensaje_venta = f"🔥 ¡Gran oferta, no te la pierdas! 🔥\n\nLlévate {producto} a solo {precio}. 😱\n\n👉 Cómpralo aquí antes de que se acabe: \n\n {link_ml} \n\n#Ofertas #MercadoLibre"
+        mensaje_venta = f"🔥 ¡Gran oferta, no te la pierdas! 🔥\n\nLlévate {producto} a solo $ {precio}. 😱\n\n👉 Cómpralo aquí antes de que se acabe: \n\n {link_ml} \n\n#Ofertas #MercadoLibre"
         
         st.success("¡Texto generado con éxito!")
         st.text_area("Vista previa del mensaje:", value=mensaje_venta, height=150)
@@ -37,40 +37,4 @@ if st.button("Generar Texto y Link de WhatsApp", type="primary"):
 
 st.divider()
 
-# --- SECCIÓN 2: CHATBOT GRATUITO (Basado en Reglas) ---
-st.header("Chatbot de Asistencia (100% Gratis)")
-st.caption("Este chat no usa servicios de paga. Funciona con las reglas que tú le programes.")
-
-# Inicializar la memoria del chat
-if "mensajes" not in st.session_state:
-    st.session_state.mensajes = [{"rol": "assistant", "contenido": "¡Hola! Soy tu asistente de ventas. Pregúntame cómo usar la plataforma o dudas sobre los links."}]
-
-# Mostrar el historial de conversación en pantalla
-for msg in st.session_state.mensajes:
-    with st.chat_message(msg["rol"]):
-        st.write(msg["contenido"])
-
-# Caja de texto para que el usuario escriba
-if prompt := st.chat_input("Escribe tu pregunta aquí..."):
-    
-    # 1. Mostrar lo que el usuario escribió
-    st.session_state.mensajes.append({"rol": "user", "contenido": prompt})
-    with st.chat_message("user"):
-        st.write(prompt)
-    
-    # 2. Lógica del Bot Gratuito (Detecta palabras clave)
-    prompt_minusculas = prompt.lower()
-    
-    if "whatsapp" in prompt_minusculas or "compartir" in prompt_minusculas:
-        respuesta = "Para compartir, solo llena el nombre, precio y enlace arriba. ¡Al hacer clic en 'Generar', te daré un botón directo a tu WhatsApp!"
-    elif "dinero" in prompt_minusculas or "gratis" in prompt_minusculas:
-        respuesta = "Este bot está programado en Python puro. ¡No requiere de ninguna API de paga, por lo que es totalmente gratis de mantener!"
-    elif "mercado libre" in prompt_minusculas or "link" in prompt_minusculas:
-        respuesta = "Recuerda siempre copiar el enlace completo desde la app o web de MercadoLibre para que tus compradores lleguen directo al producto."
-    else:
-        respuesta = "No estoy seguro de entender. Intenta preguntarme sobre 'whatsapp', 'compartir links' o 'mercado libre'."
-        
-    # 3. Mostrar la respuesta del bot
-    st.session_state.mensajes.append({"rol": "assistant", "contenido": respuesta})
-    with st.chat_message("assistant"):
         st.write(respuesta)
