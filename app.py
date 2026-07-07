@@ -31,7 +31,7 @@ if st.button("🚀 Generar Texto y Link de WhatsApp", type="primary"):
         url_whatsapp = f"https://wa.me/?text={mensaje_codificado}"
         
         # 3. Muestra un enlace clicable que abre WhatsApp
-        st.markdown(f"### [📲 Haz clic aquí para enviarlo directo por WhatsApp]({url_whatsapp})", unsafe_allow_html=True)
+        st.markdown(f"### [Haz clic aquí para enviarlo directo por WhatsApp]({url_whatsapp})", unsafe_allow_html=True)
     else:
         st.warning("Por favor, llena los 3 campos (Producto, Precio y Link) primero.")
 
