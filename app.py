@@ -3,7 +3,7 @@ import urllib.parse
 
 st.set_page_config(page_title="Generador de Ofertas", page_icon="🛒")
 
-st.title("🛒 Generador de Ofertas para WhatsApp")
+st.title("Generador de texto para WhatsApp")
 st.write("Sube tus links de MercadoLibre y compártelos rápidamente.")
 
 # --- SECCIÓN 1: GENERADOR DE MENSAJES PARA WHATSAPP ---
