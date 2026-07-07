@@ -21,7 +21,7 @@ with col2:
 if st.button("🚀 Generar Texto y Link de WhatsApp", type="primary"):
     if producto and precio and link_ml:
         # 1. Crea el texto promocional que pediste
-        mensaje_venta = f"🔥 ¡Gran oferta, no te la pierdas! 🔥\n\nLlévate {producto} a solo {precio}. 😱\n\n👉 Cómpralo aquí antes de que se acabe: {link_ml}\n\n#Ofertas #MercadoLibre"
+        mensaje_venta = f"🔥 ¡Gran oferta, no te la pierdas! 🔥\n\nLlévate {producto} a solo {precio}. 😱\n\n👉 Cómpralo aquí antes de que se acabe: \n\n {link_ml} \n\n#Ofertas #MercadoLibre"
         
         st.success("¡Texto generado con éxito!")
         st.text_area("Vista previa del mensaje:", value=mensaje_venta, height=150)
@@ -38,7 +38,7 @@ if st.button("🚀 Generar Texto y Link de WhatsApp", type="primary"):
 st.divider()
 
 # --- SECCIÓN 2: CHATBOT GRATUITO (Basado en Reglas) ---
-st.header("🤖 Chatbot de Asistencia (100% Gratis)")
+st.header("Chatbot de Asistencia (100% Gratis)")
 st.caption("Este chat no usa servicios de paga. Funciona con las reglas que tú le programes.")
 
 # Inicializar la memoria del chat
