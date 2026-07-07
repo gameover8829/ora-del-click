@@ -36,5 +36,3 @@ if st.button("Generar Texto y Link de WhatsApp", type="primary"):
         st.warning("Por favor, llena los 3 campos (Producto, Precio y Link) primero.")
 
 st.divider()
-
-        st.write(respuesta)
