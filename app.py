@@ -16,19 +16,25 @@ with col1:
 with col2:
     link_ml = st.text_input("Link de MercadoLibre", placeholder="https://articulo.mercadolibre.com.mx/...")
     
-    # Lista actualizada con las categorías reales de las imágenes
+    # Lista actualizada con nuevas categorías
     lista_categorias = [
         "General / Cualquiera", 
         "Vehículos y Accesorios", 
         "Supermercado y Alimentos", 
         "Tecnología y Electrónica", 
+        "Videojuegos y Consolas",       # NUEVA
+        "Electrodomésticos",            # NUEVA
         "Hogar y Muebles", 
         "Moda", 
+        "Joyería y Relojes",            # NUEVA
         "Deportes y Fitness", 
         "Herramientas y Construcción", 
         "Mascotas", 
         "Bebés y Juguetes", 
-        "Salud y Belleza"
+        "Salud y Belleza",
+        "Libros y Música",              # NUEVA
+        "Instrumentos Musicales",       # NUEVA
+        "Papelería y Arte"              # NUEVA
     ]
     categoria = st.selectbox("Categoría del producto:", lista_categorias)
 
@@ -42,7 +48,6 @@ estilo = st.selectbox("Elige el estilo del mensaje:", ["Llamativo", "Corto y dir
 if producto and precio and link_ml:
     
     # --- LÓGICA DE TEXTOS ADAPTADOS AL PRODUCTO Y ESTILO ---
-    # 1. Definimos variables adaptadas según la amplia lista de categorías
     if categoria == "Vehículos y Accesorios":
         emoji_cat = "🚗🔧"
         frase_cat = f"¡Equipa tu vehículo con este excelente {producto}!"
@@ -55,6 +60,14 @@ if producto and precio and link_ml:
         emoji_cat = "⚡📱"
         frase_cat = f"¡Llegó la hora de actualizarte! Llévate este {producto}."
         frase_urgencia = "¡Pocas unidades disponibles de esta joya tecnológica!"
+    elif categoria == "Videojuegos y Consolas":
+        emoji_cat = "🎮🕹️"
+        frase_cat = f"¡Lleva tu entretenimiento al siguiente nivel con este {producto}!"
+        frase_urgencia = "¡Sube de nivel antes de que se agoten las unidades!"
+    elif categoria == "Electrodomésticos":
+        emoji_cat = "🧊🍳"
+        frase_cat = f"¡Facilita tu día a día con este increíble {producto}!"
+        frase_urgencia = "¡Equipa tu casa al mejor precio ahora mismo!"
     elif categoria == "Hogar y Muebles":
         emoji_cat = "🏡🛋️"
         frase_cat = f"Dale un toque especial a tu casa con este {producto}."
@@ -63,51 +76,7 @@ if producto and precio and link_ml:
         emoji_cat = "👟👗"
         frase_cat = f"¡Renueva tu outfit con este increíble {producto}! Luce espectacular."
         frase_urgencia = "¡Últimas tallas y modelos en inventario!"
-    elif categoria == "Deportes y Fitness":
-        emoji_cat = "🏋️‍♂️⚽"
-        frase_cat = f"¡Ponte en forma y da tu máximo con este {producto}!"
-        frase_urgencia = "¡Equípate antes de que suba de precio!"
-    elif categoria == "Herramientas y Construcción":
-        emoji_cat = "🛠️🏗️"
-        frase_cat = f"¡Haz tus proyectos realidad con la mejor calidad! Increíble {producto}."
-        frase_urgencia = "¡Herramientas indispensables a un precio irrepetible!"
-    elif categoria == "Mascotas":
-        emoji_cat = "🐶🐱"
-        frase_cat = f"¡Consiente a tu mejor amigo peludo con este {producto}!"
-        frase_urgencia = "¡Lo mejor para tu mascota a un clic, últimas piezas!"
-    elif categoria == "Bebés y Juguetes":
-        emoji_cat = "👶🧸"
-        frase_cat = f"¡Diversión y cuidado garantizado con este {producto}!"
-        frase_urgencia = "¡Consíguelo antes de que vuele!"
-    elif categoria == "Salud y Belleza":
-        emoji_cat = "✨💄"
-        frase_cat = f"Consiéntete como te mereces. Este {producto} es justo lo que necesitas."
-        frase_urgencia = "¡Cuida de ti al mejor precio antes de que se agote!"
-    else:  # General / Cualquiera
-        emoji_cat = "🎁🛍️"
-        frase_cat = f"¡Checa este productazo! El {producto} que estabas buscando."
-        frase_urgencia = "¡Corre porque vuelan las piezas!"
-
-    # 2. Construimos la plantilla final uniendo el Estilo + los datos de la Categoría
-    if estilo == "Llamativo":
-        mensaje_default = f"🔥 ¡GRAN OFERTA DE NO CREER! 🔥\n\n{emoji_cat} {frase_cat}\n\n💰 Precio especial: solo $ {precio}. 😱\n\n👉 Cómpralo de forma segura en MercadoLibre aquí: \n{link_ml} \n\n#Ofertas #MercadoLibre #Imperdible"
-    
-    elif estilo == "Corto y directo":
-        mensaje_default = f"✅ {emoji_cat} {producto} disponible por solo ${precio}.\n\n🛒 Cómpralo aquí directo en MercadoLibre: {link_ml}"
-    
-    else:  # Urgencia
-        mensaje_default = f"🚨 ¡ÚLTIMAS PIEZAS DISPONIBLES! 🚨\n\n{producto} súper rebajado a solo ${precio}. 😱\n\n⚠️ {frase_urgencia}\n\n🛒 Haz tu pedido AQUÍ antes de que se acabe: {link_ml}"
-    
-    # 3. Mostramos la caja de texto editable para el usuario
-    mensaje_final = st.text_area("Edita el texto final si deseas agregar o quitar algo:", value=mensaje_default, height=200)
-    
-    # 4. Codificación y botón de WhatsApp
-    mensaje_codificado = urllib.parse.quote(mensaje_final)
-    url_whatsapp = f"https://wa.me/?text={mensaje_codificado}"
-    
-    st.link_button("Enviar por WhatsApp", url_whatsapp, type="primary")
-
-else:
-    st.info("Por favor, introduce el nombre del producto, precio y link arriba para generar los textos personalizados.")
-
-st.divider()
+    elif categoria == "Joyería y Relojes":
+        emoji_cat = "💍⌚"
+        frase_cat = f"¡Luce increíble y a la moda con este hermoso {producto}!"
+        fr
